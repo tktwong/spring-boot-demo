@@ -10,8 +10,8 @@
 curl -X POST 'https://keycloak.appswalker.com/auth/realms/Demo/protocol/openid-connect/token' \
  --header 'Content-Type: application/x-www-form-urlencoded' \
  --data-urlencode 'grant_type=password' \
- --data-urlencode 'client_id=springboot-microservice' \
- --data-urlencode 'client_secret=6236bfd5-2440-42d7-982c-170a92414ee2' \
+ --data-urlencode 'client_id=${clientId}' \
+ --data-urlencode 'client_secret=${clientSecret}' \
  --data-urlencode 'username=employee1' \
  --data-urlencode 'password=mypassword'
 ```
