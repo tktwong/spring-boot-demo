@@ -8,3 +8,12 @@ spring:
     console:
       enabled: true
       path: /console
+keycloak:
+  realm: Demo
+  auth-server-url: ${keycloak_server_url}
+  ssl-required: external
+  resource: ${demo_client_id}
+  credentials:
+    secret: ${democ_lient_secret}
+  use-resource-role-mappings: true
+  bearer-only: true
