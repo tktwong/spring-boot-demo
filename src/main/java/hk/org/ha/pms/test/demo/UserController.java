@@ -17,7 +17,7 @@ public class UserController {
 
     @GetMapping("/hello")
     String sayHello() {
-        return "hello all!!";
+        return "hello world!!";
     }
 
     @RolesAllowed("admin")
@@ -26,7 +26,7 @@ public class UserController {
         return userService.create(user);
     }
 
-    @RolesAllowed("user")
+    @RolesAllowed({"user","admin"})
     @GetMapping("/users")
     List<User> getAll() {
        return userService.findAll();
