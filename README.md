@@ -7,7 +7,7 @@
 
 ## Get Token
 ```bash
-curl -X POST 'https://keycloak.appswalker.com/auth/realms/Demo/protocol/openid-connect/token' \
+curl -X POST 'https://keycloak.${domain}/auth/realms/Demo/protocol/openid-connect/token' \
  --header 'Content-Type: application/x-www-form-urlencoded' \
  --data-urlencode 'grant_type=password' \
  --data-urlencode 'client_id=${clientId}' \
