@@ -1,9 +1,9 @@
 package hk.org.ha.pms.test.demo;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
@@ -20,25 +20,25 @@ public class UserController {
         return "hello world!!";
     }
 
-    @RolesAllowed("admin")
+    @PreAuthorize("hasAuthority('p:demo2:users:create')")
     @PostMapping("/users")
     User createUser(@Valid @RequestBody User user) {
         return userService.create(user);
     }
 
-    @RolesAllowed({"user","admin"})
+    @PreAuthorize("hasAuthority('p:demo2:users:view')")
     @GetMapping("/users")
     List<User> getAll() {
        return userService.findAll();
     }
 
-    @RolesAllowed("admin")
+    @PreAuthorize("hasAuthority('p:demo2:users:update')")
     @PutMapping("/users")
     User updateUser(@Valid @RequestBody User userDetail) {
         return userService.update(userDetail);
     }
 
-    @RolesAllowed("admin")
+    @PreAuthorize("hasAuthority('p:demo2:users:delete')")
     @DeleteMapping("/users/{id}")
     Map<String, Boolean> deleteUser(@PathVariable Long id) {
         userService.delete(id);

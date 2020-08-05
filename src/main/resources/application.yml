@@ -12,8 +12,21 @@ keycloak:
   realm: Demo
   auth-server-url: ${keycloak_server_url}
   ssl-required: external
-  resource: ${demo_client_id}
+  resource: ${demo_client2_id}
   credentials:
-    secret: ${democ_lient_secret}
-  use-resource-role-mappings: true
-  bearer-only: true
+    secret: ${demo_client2_secret}
+#  use-resource-role-mappings: true
+  bearer-only: off
+  policy-enforcer-config:
+    enforcement-mode: enforcing
+  security-constraints:
+    - authRoles:
+        - '*'
+      securityCollections:
+        - patterns:
+            - /*
+  principal-attribute: preferred_username
+
+logging:
+  level:
+    org.keycloak: DEBUG
